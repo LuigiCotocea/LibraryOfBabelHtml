@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d4cfcf; /* Light background color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.pageTitle {
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    color: #4b4b4b;
+    font-size: 24px;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inputForm {
+    text-align: left;
+    margin-right: 20px;
+}
+
+input, button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff; /* White background for input elements */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50; /* Green color for the button */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Add transition for smooth effect */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}
+
+button:active {
+    background-color: #307432; /* Even darker green color on button press */
+}
+
+#bookContainer {
+    flex-grow: 1;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #4b4b4b;
+    border-radius: 10px;
+    resize: both;
+    overflow: auto;
+    max-height: 600px;
+    max-width: 1000px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#bookText {
+    white-space: pre-line;
+    word-wrap: break-word;
+    max-width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #333;
+}

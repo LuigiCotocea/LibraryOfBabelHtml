@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Library of Babel</title>
+</head>
+<body>
+    <h1 class="pageTitle">Library of Babel</h1>
+
+    <div id="container">
+        <div id="inputForm">
+            <label for="shelfInput">Shelf:</label>
+            <input type="text" id="shelfInput" placeholder="Enter shelf number">
+
+            <label for="rowInput">Row:</label>
+            <input type="text" id="rowInput" placeholder="Enter row number">
+
+            <label for="bookInput">Book:</label>
+            <input type="text" id="bookInput" placeholder="Enter book number">
+
+            <label for="volumeInput">Volume:</label>
+            <input type="text" id="volumeInput" placeholder="Enter book volume">
+
+            <label for="hexInput">Hex:</label>
+            <input type="text" id="hexInput" placeholder="Enter hex value">
+
+            <button onclick="addBook()">Add Book</button>
+
+            <label for="reverseInput">Reverse Lookup:</label>
+            <input type="text" id="reverseInput" placeholder="Paste gibberish here">
+            <button onclick="reverseLookup()">Lookup</button>
+            <strong>Note: Reverse lookup not working yet</strong>
+        </div>
+
+        <div id="bookContainer">
+            <!-- Central container for displaying book text -->
+            <!-- Example: You can dynamically update this content with JavaScript -->
+            <div id="bookText">
+                Book details will appear here.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
