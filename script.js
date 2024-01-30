@@ -1,72 +1,49 @@
-// Function to generate random gibberish with a specified length
 const gibberishMap = {};
 
 function generateGibberish(targetLength) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,. ';
-    let gibberish = '';
-
-    while (gibberish.length < targetLength) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        gibberish += characters.charAt(randomIndex);
-    }
-
-    // Trim excess characters if the gibberish exceeds the target length
-    gibberish = gibberish.slice(0, targetLength);
-
-    return gibberish;
-}
-
-function hexToLocation(hexValue, shelf, row, volume, book) {
-    // You can customize this based on your actual library system logic
-    return {
-        hex: hexValue,
-        shelf: shelf,
-        row: row,
-        volume: volume,
-        book: book
-    };
-}
-
-function isNumeric(value) {
-    return /^\d+$/.test(value);
+    return Array.from({ length: targetLength }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
 }
 
 function addBook() {
-    // Check if input boxes are empty
-    const hexInput = document.getElementById('hexInput').value.trim();
-    const shelfInput = document.getElementById('shelfInput').value.trim();
-    const rowInput = document.getElementById('rowInput').value.trim();
-    const volumeInput = document.getElementById('volumeInput').value.trim();
-    const bookInput = document.getElementById('bookInput').value.trim();
+    // Cache DOM elements
+    const shelfInput = document.getElementById('shelfInput');
+    const rowInput = document.getElementById('rowInput');
+    const volumeInput = document.getElementById('volumeInput');
+    const bookInput = document.getElementById('bookInput');
+    const bookTextContainer = document.getElementById('bookText');
 
-    // Check if shelf, row, volume, and book are empty
-    if (!shelfInput || !rowInput || !volumeInput || !bookInput) {
+    // Check if input boxes are empty
+    const inputs = [shelfInput, rowInput, volumeInput, bookInput];
+    if (inputs.some(input => !input.value.trim())) {
         alert("Shelf, row, volume, and book cannot be empty.");
         return;
     }
 
-    // Validate if shelf, row, volume, and book inputs contain only numbers
-    if (!isNumeric(shelfInput) || !isNumeric(rowInput) || !isNumeric(volumeInput) || !isNumeric(bookInput)) {
+    // Validate if inputs contain only numbers
+    if (inputs.some(input => !isNumeric(input.value.trim()))) {
         alert("Shelf, row, volume, and book must contain only numbers.");
         return;
     }
 
     // Combine parameters to create a unique key for gibberish storage
-    const combinedKey = `${hexInput}_${shelfInput}_${rowInput}_${volumeInput}_${bookInput}`;
+    const combinedKey = `${shelfInput.value.trim()}_${rowInput.value.trim()}_${volumeInput.value.trim()}_${bookInput.value.trim()}`;
 
     // Check if gibberish is already generated for the given parameters
     let gibberish = gibberishMap[combinedKey];
 
     // If not, generate new gibberish and store it in the map
     if (!gibberish) {
-        gibberish = generateGibberish(3200);
-        gibberish = gibberish.replace(/ /g, '\u00A0');
+        gibberish = generateGibberish(3200).replace(/ /g, '\u00A0');
         gibberishMap[combinedKey] = gibberish;
     }
 
     // Update the book text container with only the gibberish
-    const bookTextContainer = document.getElementById('bookText');
     bookTextContainer.textContent = gibberish;
+}
+
+function isNumeric(value) {
+    return /^\d+$/.test(value);
 }
 
 // Function to reverse gibberish and display book details
