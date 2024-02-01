@@ -26,18 +26,21 @@ body {
 }
 
 #inputForm {
+    position: relative;
+    left: -550px;
     text-align: left;
-    margin-right: 20px;
+    margin-right: 0px;
 }
 
 input, button {
     display: block;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
     font-size: 16px;
     background-color: #fff; /* White background for input elements */
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #4b4b4b;
+    border-radius: 15px;
+    margin-left: px;
 }
 
 button {
@@ -56,6 +59,9 @@ button:active {
 }
 
 #bookContainer {
+    position: fixed;
+    left: -50;
+    right: -50;
     flex-grow: 1;
     text-align: center;
     padding: 20px;
@@ -64,15 +70,16 @@ button:active {
     border-radius: 10px;
     resize: both;
     overflow: auto;
-    max-height: 600px;
-    max-width: 1000px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    max-width: 700px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 #bookText {
     white-space: pre-line;
     word-wrap: break-word;
     max-width: 100%;
+    max-height: 100%;
     margin: 0 auto;
     line-height: 1.5;
     color: #333;
