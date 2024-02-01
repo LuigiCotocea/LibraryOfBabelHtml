@@ -11,23 +11,24 @@ function addBook() {
     const rowInput = document.getElementById('rowInput');
     const volumeInput = document.getElementById('volumeInput');
     const bookInput = document.getElementById('bookInput');
+    const hexInput = document.getElementById('hexInput');
     const bookTextContainer = document.getElementById('bookText');
 
     // Check if input boxes are empty
-    const inputs = [shelfInput, rowInput, volumeInput, bookInput];
+    const inputs = [shelfInput, rowInput, volumeInput, bookInput, hexInput];
     if (inputs.some(input => !input.value.trim())) {
-        alert("Shelf, row, volume, and book cannot be empty.");
+        alert("Shelf, row, volume, book, and hex cannot be empty.");
         return;
     }
 
     // Validate if inputs contain only numbers
-    if (inputs.some(input => !isNumeric(input.value.trim()))) {
+    if (inputs.slice(0, 4).some(input => !isNumeric(input.value.trim()))) {
         alert("Shelf, row, volume, and book must contain only numbers.");
         return;
     }
 
     // Combine parameters to create a unique key for gibberish storage
-    const combinedKey = `${shelfInput.value.trim()}_${rowInput.value.trim()}_${volumeInput.value.trim()}_${bookInput.value.trim()}`;
+    const combinedKey = `${shelfInput.value.trim()}_${rowInput.value.trim()}_${volumeInput.value.trim()}_${bookInput.value.trim()}_${hexInput.value.trim()}`;
 
     // Check if gibberish is already generated for the given parameters
     let gibberish = gibberishMap[combinedKey];
@@ -45,6 +46,9 @@ function addBook() {
 function isNumeric(value) {
     return /^\d+$/.test(value);
 }
+
+
+---------
 
 // Function to reverse gibberish and display book details
 function reverseGibberish(gibberish) {
